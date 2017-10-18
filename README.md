@@ -1,6 +1,6 @@
 # grunt-node-uglifier
-
-> The best Grunt plugin ever.
+[![npm Version](https://badge.fury.io/js/grunt-node-uglifier.png)](https://npmjs.org/package/grunt-node-uglifier)
+> A grunt task for node-uglifier. Fully auto merging and obfuscating (uglify) a whole NodeJs project into one file with external files option.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -26,64 +26,31 @@ In your project's Gruntfile, add a section named `node_uglifier` to the data obj
 grunt.initConfig({
   node_uglifier: {
     options: {
-      // Task-specific options go here.
+      mergeFileFilter: [], //https://github.com/zsoltszabo/node-uglifier#leave-out-files-from-merging
+      uglify: true //Runs .merge().uglify, if false just runs .merge()
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
+    files: {
+      'main.optimized.js': 'build/index.js' // dest: entry_point
     },
   },
 });
 ```
 
 ### Options
+See: https://github.com/zsoltszabo/node-uglifier
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.mergeFileFilter
+Type: `Array`
+Default value: `[]`
 
-A string value that is used to do something with whatever.
+Leave files out from merging.
+See: https://github.com/zsoltszabo/node-uglifier#leave-out-files-from-merging
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
+#### options.uglify
+Type: `Boolean`
+Default value: `true`
 
-A string value that is used to do something else with whatever else.
-
-### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  node_uglifier: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  node_uglifier: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
+After merge uglify files. Otherwise just leave them merged without uglifying
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
-## Release History
-_(Nothing yet)_
+If you have anything to contribute, or functionality that you lack - you are more than welcome to participate in this! If anyone wishes to contribute unit tests - that also would be great

@@ -2,7 +2,7 @@
 * grunt-node-uglifier
 * https://github.com/root/grunt-node-uglifier
 *
-* Copyright (c) 2017 Andrew Nagy
+* Copyright (c) 2017 Sangoma Technologies, Inc
 * Licensed under the MIT license.
 */
 
